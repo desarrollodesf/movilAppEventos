@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/numeroDocumentoTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="12"
+            app:counterOverflowTextAppearance="@style/CounterOverFlow"
+            app:counterTextAppearance="@style/Counter"
+            app:errorEnabled="true"
+            android:layout_marginTop="10dp"
+            app:errorTextAppearance="@style/Error"
+            app:hintTextAppearance="@style/TextLabel">
+
+            <EditText
+                android:id="@+id/numeroDocumentoEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/identityNumber"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:maxLines="1"
+                android:maxLength="12"
+                android:imeOptions="actionDone"
+                android:imeActionLabel="" />
+        </android.support.design.widget.TextInputLayout>
+
+        <RelativeLayout
+            android:id="@+id/eventsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/numeroDocumentoTIL"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/eventsInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:text="@string/id"
+                    android:textSize="16sp"
+                    android:id="@+id/idEvent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"/>
+
+                <TextView
+                    android:text="@string/eventName"
+                    android:textSize="16sp"
+                    android:id="@+id/nameEvent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:gravity="center_horizontal"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/eventsRecyclerView"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/eventsInfo"
+                android:paddingTop="16dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/userInformation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/numeroDocumentoTIL"
+            android:visibility="visible"
+            tools:visibility="gone">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/nombreTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/nombreEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:focusable="false" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/cooperativaTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nombreTIL">
+
+                <EditText
+                    android:id="@+id/cooperativaEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/branch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:focusable="false" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/placeIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/cooperativaTIL"
+                android:weightSum="1"
+                android:baselineAligned="false">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/departamentoIL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/departamentoEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/state"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:focusable="false"
+                        android:imeOptions="actionNext" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/ciudadTIL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/ciudadEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/city"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/direccionIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/placeIL">
+
+                <EditText
+                    android:id="@+id/direccionEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/address"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:focusable="false" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:id="@+id/numberContactIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_below="@id/direccionIL"
+                android:baselineAligned="false">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/numeroTelefonicoTIL"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/numeroTelefonicoEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/number"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:imeOptions="actionNext" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/numeroCelularTIL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5">
+
+                    <EditText
+                        android:id="@+id/numeroCelularEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/cellPhone"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:focusable="false"
+                        android:imeOptions="actionNext" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/correoElectronicoTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/numberContactIL">
+
+                <EditText
+                    android:id="@+id/correoElectronicoEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:focusable="false" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/observacionesTIL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/correoElectronicoTIL"
+                android:layout_marginEnd="56dp">
+
+                <EditText
+                    android:id="@+id/observacionesEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/observations"
+                    android:inputType="text"
+                    android:focusable="false" />
+            </android.support.design.widget.TextInputLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/history"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_history" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/search"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/history"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_search" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/search"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_add" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/clear"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_clear"
+        android:visibility="gone" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/save"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/clear"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_save"
+        android:visibility="gone"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/refresh"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="center"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_autorenew"
+        android:visibility="gone" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/check"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:scaleType="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@+id/refresh"
+        app:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/ic_check"
+        android:visibility="gone"/>
+
+</RelativeLayout>
